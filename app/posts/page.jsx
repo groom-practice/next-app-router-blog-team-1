@@ -37,12 +37,15 @@ export default async function PostLists({ searchParams }) {
       <div className='flex gap-2 my-2'>
         {categories.map((category) => {
           const isSelected = selectedCategory === category;
+          const href =
+            category === 'All'
+              ? '/posts'
+              : `/posts/?category=${encodeURIComponent(category)}`;
+
           return (
             <Link
               key={category}
-              href={
-                category === 'All' ? '/posts' : `/posts/?category=${category}`
-              }
+              href={href}
               className={
                 isSelected
                   ? 'text-fuchsia-600 underline font-bold'
