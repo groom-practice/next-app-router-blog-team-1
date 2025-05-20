@@ -12,7 +12,7 @@ export default async function PostLists({ searchParams }) {
   const postList = await getPosts();
   const categories = ['All', 'React', 'Next.js', 'JavaScript'];
   const params = await searchParams;
-  const category = params?.category || 'All';
+  const selectedCategory = params?.category || 'All';
   const keyword = params?.query || '';
 
   const filterPosts = postList.filter((post) => {
@@ -20,7 +20,11 @@ export default async function PostLists({ searchParams }) {
     const search = keyword.toLowerCase();
 
     if (!title.includes(search)) return false;
-    if (category && category !== 'All' && post.category !== category)
+    if (
+      selectedCategory &&
+      selectedCategory !== 'All' &&
+      post.category !== selectedCategory
+    )
       return false;
 
     return true;
@@ -30,17 +34,25 @@ export default async function PostLists({ searchParams }) {
     <div className='m-4'>
       <p className='text-xl font-bold mb-2'>글 목록</p>
       <SearchBar />
-
       <div className='flex gap-2 my-2'>
-        {categories.map((cat) => (
-          <Link
-            key={cat}
-            href={cat === 'All' ? '/posts' : `/posts/?category=${cat}`}
-            className='text-blue-500 underline'
-          >
-            {cat}
-          </Link>
-        ))}
+        {categories.map((category) => {
+          const isSelected = selectedCategory === category;
+          return (
+            <Link
+              key={category}
+              href={
+                category === 'All' ? '/posts' : `/posts/?category=${category}`
+              }
+              className={
+                isSelected
+                  ? 'text-fuchsia-600 underline font-bold'
+                  : 'text-blue-500 underline'
+              }
+            >
+              {category}
+            </Link>
+          );
+        })}
       </div>
 
       <ul>
