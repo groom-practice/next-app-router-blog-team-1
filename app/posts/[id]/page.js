@@ -10,10 +10,10 @@ export default function PostDetailPage({ params }) {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    fetch(`api/posts/${id}`)
+    fetch(`/api/posts/${id}`)
       .then((res) => {
-        if(res.status === 404) router.push("/not-found");
-        return res.json(); 
+        if (res.status === 404) router.push("/not-found");
+        return res.json();
       })
       .then(setPost);
   }, [id, router]);
