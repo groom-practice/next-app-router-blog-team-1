@@ -32,7 +32,7 @@ export default function PostDetailPage({ params }) {
       <h1 className="text-2xl font-bold">{post.title}</h1>
       <p className="my-4">{post.content}</p>
       <div className="space-x-2">
-        <Link href={`edit/${id}`} className="text-blue-600 underline">수정</Link>
+        <Link href={`/edit/${id}`} className="text-blue-600 underline">수정</Link>
         <button onClick={handleDelete} className="text-red-600 underline">삭제</button>
       </div>
     </main>
