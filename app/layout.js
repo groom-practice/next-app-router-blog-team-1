@@ -1,4 +1,5 @@
 import './globals.css';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Team1',
@@ -10,9 +11,9 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <body>
         <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
-          <a href="/" style={{ marginRight: '1rem' }}>홈</a>
-          <a href="/posts" style={{ marginRight: '1rem' }}>글 목록</a>
-          <a href="/create">글 작성</a>
+          <Link href="/" style={{ marginRight: '1rem' }}>홈</Link>
+          <Link href="/posts" style={{ marginRight: '1rem' }}>글 목록</Link>
+          <Link href="/write">글 작성</Link>
         </nav>
         <main style={{ padding: '2rem' }}>
           {children}
