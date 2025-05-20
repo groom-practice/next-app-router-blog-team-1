@@ -11,8 +11,9 @@ async function getPosts() {
 export default async function PostLists({ searchParams }) {
   const postList = await getPosts();
   const categories = ['All', 'React', 'Next.js', 'JavaScript'];
-  const category = searchParams?.category || 'All';
-  const keyword = searchParams?.query || '';
+  const params = await searchParams;
+  const category = params?.category || 'All';
+  const keyword = params?.query || '';
 
   const filterPosts = postList.filter((post) => {
     const title = post.title.toLowerCase();
