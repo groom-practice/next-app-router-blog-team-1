@@ -31,7 +31,7 @@ export default async function PostLists({ searchParams }) {
   });
 
   return (
-    <div className='m-4'>
+    <>
       <p className='text-xl font-bold mb-2'>글 목록</p>
       <SearchBar />
       <div className='flex gap-2 my-2'>
@@ -70,6 +70,6 @@ export default async function PostLists({ searchParams }) {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
