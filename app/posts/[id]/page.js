@@ -1,11 +1,11 @@
 "use client"
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { use, useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function PostDetailPage({ params }) {
-  const { id } = use(params);
+export default function PostDetailPage({ }) {
+  const { id } = useParams();
   const router = useRouter();
   const [post, setPost] = useState(null);
 
