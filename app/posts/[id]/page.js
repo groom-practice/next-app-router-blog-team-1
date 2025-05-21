@@ -19,10 +19,13 @@ export default function PostDetailPage({ params }) {
   }, [id, router]);
 
   const handleDelete = async() => {
-    await fetch(`api/posts/${id}`, {
+    const confirmed = confirm("정말 삭제 하시겠습니까?");
+    if (!confirmed) return;
+    await fetch(`/api/posts/${id}`, {
       method: "DELETE",
     });
-    router.push("/");
+    router.push("/posts");
+    router.refresh();
   };
 
   if(!post) return <p>로딩중 ...</p>;
