@@ -63,6 +63,7 @@ app-router-blog-starter/
 
 - 글 작성 폼을 클라이언트 컴포넌트로 구현(`use client` 사용)
 - 제목, 내용 입력 후 서버에 POST 요청 전송
+- 작성 폼은 `PostForm` 컴포넌트를 재사용하여 구현
 - 작성 완료 후 `/post`로 라우팅
 
 ### 4. 게시글 상세(`posts/[id]`)
@@ -71,15 +72,15 @@ app-router-blog-starter/
 - 클릭된 글의 상세 내용(`title`, `content`) 출력
 - 404 응답시 `/not-found` 페이지로 redirect 처리
 - 게시글에 대해 수정 및 삭제 버튼 제공
-  - 수정: `/edit/[id]`로 이동
-  - 삭제: `DELETE` 요청 후 `/`로 이동
+  - 수정: `/edit/[id]`로 라우팅
+  - 삭제: `confirm`을 이용해 삭제 유무를 묻고, `DELETE` 요청 후 `/`로 라우팅
 
 ### 5. 게시글 수정(`/edit/[id]`)
 
 - `id`에 해당하는 기존 게시글 데이터를 받아와 수정 폼에 미리 채움
 - 수정 폼은 `PostForm` 컴포넌트를 재사용하여 구현
 - `PUT` 요청으로 서버에 수정된 데이터 전송
-- 수정 완료 후 `/posts/[id]`로 이동
+- 수정 완료 후 `/posts/[id]`로 라우팅
 - `PostForm` 컴포넌트는 작성과 수정에서 모두 재사용 가능하며, prop로 받은 `post` 유무에 따라 동작 분기
 
 ### 6. 404 - not found(`/not-found`)
