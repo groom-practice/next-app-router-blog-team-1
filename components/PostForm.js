@@ -17,18 +17,24 @@ function PostForm({ post, id }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("수정된 데이터 -> ", formData);
-    await fetch(`/api/posts/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: formData.title,
-        content: formData.content,
-        category: formData.category,
-      }),
-    });
+    console.log("작성된 데이터 -> ", formData);
 
-    router.push(`/posts/${id}`);
+    if (post && id) {
+      await fetch(`/api/posts/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      router.push(`/posts/${id}`);
+    } else {
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      router.push(`/posts`);
+    }
   };
 
   return (
